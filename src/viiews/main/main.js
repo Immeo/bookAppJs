@@ -1,5 +1,6 @@
 import onChange from 'on-change';
 import { AbtrackView } from '../../common/view.js';
+import { Header } from '../../components/header/header.js';
 
 export class MainView extends AbtrackView {
 	state = {
@@ -24,13 +25,14 @@ export class MainView extends AbtrackView {
 
 	render() {
 		const main = document.createElement('div');
-		main.innerHTML = `
-            <h1>Find book</h1>
-            <div>length list  books:${this.appState.favorites.length}
-            </div>
-        `;
 		this.app.innerHTML = '';
 		this.app.appendChild(main);
+		this.renderHeader();
 		this.appState.favorites.push('12345');
+	}
+
+	renderHeader() {
+		const header = new Header(this.appState).render();
+		this.app.prepend(header);
 	}
 }
