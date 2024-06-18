@@ -1,0 +1,40 @@
+.search {
+	width: 100%;
+	display: flex;
+	gap: 10px;
+	margin-bottom: 30px;
+}
+
+.search__wrapper {
+	position: relative;
+	display: flex;
+	flex: 1;
+}
+
+.search__wrapper img {
+	position: absolute;
+	left: 10px;
+	top: 12px;
+}
+
+.search__book_input {
+	padding: 15px 30px 15px 50px;
+	flex: 1;
+	border-radius: 5px;
+	border: none;
+	background: #dedede;
+}
+
+.search__book_input::placeholder {
+	color: #252525;
+}
+
+.search button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	background: var(--black);
+}
