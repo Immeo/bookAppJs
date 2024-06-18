@@ -6,7 +6,6 @@ export default {
 	output: {
 		dir: 'dist',
 		format: 'iife',
-		assetFileNames: 'assets/bungle.css',
 	},
-	plugins: [css(), nodeResolve()],
+	plugins: [css({ output: 'bundle.css' }), nodeResolve()], // css({ output: 'bundle.css' }) creates a single css file without a hash in the name
 };
