@@ -1,0 +1,7 @@
+.card__list__loader {
+	padding: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+}

@@ -1,11 +1,13 @@
 import onChange from 'on-change';
 import { AbtrackView } from '../../common/view.js';
+import { CardList } from '../../components/card-list/card-list.js';
 import { Header } from '../../components/header/header.js';
 import { Search } from '../../components/search/search.js';
 
 export class MainView extends AbtrackView {
 	state = {
 		list: [],
+		numFound: 0,
 		loading: false,
 		searchQuery: undefined,
 		offset: 0,
@@ -34,7 +36,11 @@ export class MainView extends AbtrackView {
 			);
 			this.state.loading = false;
 			console.log(data);
+			this.state.numFound = data.numFound;
 			this.state.list = data.docs;
+		}
+		if (path === 'list' || path === 'loading') {
+			this.render();
 		}
 	}
 
@@ -49,6 +55,7 @@ export class MainView extends AbtrackView {
 	render() {
 		const main = document.createElement('div');
 		main.append(new Search(this.state).render());
+		main.append(new CardList(this.appState, this.state).render());
 		this.app.innerHTML = '';
 		this.app.appendChild(main);
 		this.renderHeader();
