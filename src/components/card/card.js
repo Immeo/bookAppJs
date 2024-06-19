@@ -8,39 +8,14 @@ export class Card extends DivComponent {
 		this.cardState = cardState;
 	}
 
-	addFavorite() {
-		this.el.querySelector('button__add').addEventListener('click', () => {
-			if (
-				this.el.querySelector('.card__title').innerText !=
-				this.appState.favorites.indexOf(
-					this.el.querySelector('card__title').innerText
-				)
-			) {
-				this.appState.favorites.push(
-					this.el.querySelector('.card__title').innerText
-				);
-				this.el.querySelector('.button__add').classList.add('button__active');
-			}
-		});
+	#addFavorites() {
+		this.appState.favorites.push(this.cardState);
 	}
 
-	removeFavorite() {
-		this.el.querySelector('.button__add').addEventListener('click', () => {
-			if (
-				this.el.querySelector('.card__title').innerText ==
-				this.appState.favorites.indexOf(
-					this.el.querySelector('.card__title').innerText
-				)
-			) {
-				this.appState.favorites.splice(
-					this.el.querySelector('.card__title').innerText,
-					1
-				);
-				this.el
-					.querySelector('.button__add')
-					.classList.remove('button__active');
-			}
-		});
+	#deleteFavorites() {
+		this.appState.favorites = this.appState.favorites.filter(
+			f => f.key !== this.cardState.key
+		);
 	}
 
 	render() {
@@ -75,7 +50,15 @@ export class Card extends DivComponent {
 				</div>
 			</div>
 		`;
-
+		if (existInFavorites) {
+			this.el
+				.querySelector('.button__add')
+				.addEventListener('click', this.#deleteFavorites.bind(this));
+		} else {
+			this.el
+				.querySelector('.button__add')
+				.addEventListener('click', this.#addFavorites.bind(this));
+		}
 		return this.el;
 	}
 }

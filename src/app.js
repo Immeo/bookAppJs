@@ -1,7 +1,11 @@
+import { favoritesView } from './viiews/favorites-view/favorites-view';
 import { MainView } from './viiews/main/main';
 
 class App {
-	routes = [{ path: '', views: MainView }];
+	routes = [
+		{ path: '', views: MainView },
+		{ path: '#favorite', views: favoritesView },
+	];
 
 	appState = {
 		favorites: [],

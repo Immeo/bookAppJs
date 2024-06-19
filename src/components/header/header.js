@@ -14,11 +14,11 @@ export class Header extends DivComponent {
 				<img src="/static/find-books.svg" alt="Logotype" />
 			</div>
 			<div class="menu">
-				<a class="menu__item" href="#">
+				<a class="menu__item" href="/">
 					<img src="/static/search.svg" alt="Search book icon" />
 					Search book
 				</a>
-				<a class="menu__item" href="#favorites">
+				<a class="menu__item link__favorites" href="#favorite">
 					<img src="/static/favorites.svg" alt="Favorites icon" />
 					Favorites
 					<div class="menu__counter">
